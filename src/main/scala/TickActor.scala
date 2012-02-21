@@ -7,7 +7,10 @@ import akka.event.Logging
 class TickActor extends Actor {
 
   val log = Logging(context.system, this)
+  val driver = new FileDriver
+
   def receive = {
-    case "tick" => println("Tick") //Do something
+    case "tick" => println(driver tick)
   }
+
 }
