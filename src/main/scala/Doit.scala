@@ -7,14 +7,19 @@ object Doit extends App {
 
   val system = ActorSystem("DoitSystem")
 
-  val tickActor = system.actorOf(Props[TickActor], name="tick")
+  val tickActor = system.actorOf(Props[TickActor], name = "tick")
 
   //This will schedule to send the Tick-message
   //to the tickActor after 0s repeating every second
 
-  val cancellable =
-    system.scheduler.schedule(0 seconds,
-      1 seconds,
-      tickActor,
-      "tick")
+  system.scheduler.schedule(
+    0 seconds,
+    1 seconds,
+    tickActor,
+    "tick")
+
+  system.scheduler.scheduleOnce(
+    10 seconds,
+    tickActor,
+    PoisonPill)
 }
