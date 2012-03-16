@@ -8,6 +8,7 @@ trait Resolvers {
 
 trait Dependencies {
   val akka = "com.typesafe.akka" % "akka-actor" % "2.0-RC1"
+  val config = "com.typesafe.config" % "config" % "0.3.0"
   val scalaz = "org.scalaz" %% "scalaz-core" % "6.0.4"
   val specs2 = "org.specs2" %% "specs2" % "1.8.2"
 }
@@ -15,7 +16,7 @@ trait Dependencies {
 object ApplicationBuild extends Build with Resolvers with Dependencies {
 
   val doit = Project("simplydoit", file("."), settings = Project.defaultSettings).settings(
-    libraryDependencies := Seq(akka, scalaz, specs2),
+    libraryDependencies := Seq(akka, scalaz, specs2, config),
     resolvers := Seq(typesafe),
     scalacOptions := Seq("-deprecation", "-unchecked")
   )

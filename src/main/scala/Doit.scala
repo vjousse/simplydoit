@@ -5,6 +5,9 @@ import akka.util.duration._
 
 object Doit extends App {
 
+  //TODO: Remove hardcoding
+  val env = Env("/home/vjousse/usr/src/scala/simplydoit/simplydoit.conf")
+
   val system = ActorSystem("DoitSystem")
 
   val tickActor = system.actorOf(Props[TickActor], name = "tick")
@@ -13,13 +16,15 @@ object Doit extends App {
   //to the tickActor after 0s repeating every second
 
   system.scheduler.schedule(
+    //inital delay
     0 seconds,
-    1 seconds,
+    //frequency
+    env.tickFrequency seconds,
     tickActor,
     "tick")
 
   system.scheduler.scheduleOnce(
-    10 seconds,
+    env.sessionSeconds seconds,
     tickActor,
     PoisonPill)
 }
