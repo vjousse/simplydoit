@@ -6,8 +6,8 @@ trait Env {
 
   val config: Config
 
-  lazy val tickFrequency:Int = config getInt "simplydoit.tickFrequency"
-  lazy val sessionSeconds:Int = config getInt "simplydoit.sessionSeconds"
+  lazy val tickFrequency: Int = config getInt "simplydoit.tickFrequency"
+  lazy val sessionSeconds: Int = config getInt "simplydoit.sessionSeconds"
 }
 
 object Env extends EnvBuilder {
