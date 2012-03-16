@@ -10,7 +10,12 @@ class TickActor extends Actor {
   val driver = new FileDriver("tick.txt")
 
   def receive = {
-    case "tick" => driver tick
+    case "tick" => tick
   }
 
+  def tick() = {
+    driver tick
+
+    //TODO: Could be cool to play a sound here
+  }
 }
