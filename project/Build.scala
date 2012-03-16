@@ -7,7 +7,7 @@ trait Resolvers {
 }
 
 trait Dependencies {
-  val akka = "com.typesafe.akka" % "akka-actor" % "2.0-RC1"
+  val akka = "com.typesafe.akka" % "akka-actor" % "2.0"
   val config = "com.typesafe.config" % "config" % "0.3.0"
   val scalaz = "org.scalaz" %% "scalaz-core" % "6.0.4"
   val specs2 = "org.specs2" %% "specs2" % "1.8.2"
